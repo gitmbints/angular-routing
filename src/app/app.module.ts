@@ -22,7 +22,14 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { FormsModule } from '@angular/forms';
 
 
-
+// DEFINE ROUTES
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'courses', component: CoursesComponent },
+  { path: '',   redirectTo: '/home', pathMatch: 'full' }
+]
 
 
 @NgModule({
@@ -46,7 +53,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ServicesService, CourseService],
   bootstrap: [AppComponent]

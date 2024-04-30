@@ -1,13 +1,23 @@
-.page-not-found-container{
-    padding: 200px 0px;
-    text-align: center;
-}
-h1{
-    font-weight: bold;
-    margin: 10px;
+.page-not-found-container {
+	padding: 200px 0px;
+	text-align: center;
 }
 
-.page-not-found{
-    color: #FF5733;
-    font-weight: bold;
+h1 {
+	font-weight: bold;
+	margin: 10px;
+}
+
+.page-not-found {
+	color: #ff5733;
+	font-weight: bold;
+}
+
+a {
+	color: #ff5733;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
 }

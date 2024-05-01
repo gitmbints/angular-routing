@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 export class BannerComponent {
   router: Router = inject(Router);
 
-  handleSearch(value: string) {   
-    value ? this.router.navigate(['/courses'], { queryParams: { search: value } }) : '';
+  handleSearch(value: string) {
+    if (value) {
+      this.router.navigate(['/courses'], { queryParams: { search: value } });
+    }
   }
 }

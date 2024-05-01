@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { Routes, RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { ServicesService } from "./Services/services.service";
 import { HomeComponent } from "./home/home.component";
@@ -20,18 +19,8 @@ import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { FormsModule } from "@angular/forms";
+import { AppRoutingModule } from './app-routing.module';
 
-// DEFINE ROUTES
-const routes: Routes = [
-	{ path: "home", component: HomeComponent },
-	{ path: "about", component: AboutComponent },
-	{ path: "contact", component: ContactComponent },
-	{ path: "courses", component: CoursesComponent },
-  // { path: "courses/course/:id", component: CourseDetailComponent },
-  { path: "courses", children: [ { path: "course/:id", component: CourseDetailComponent} ]},
-	{ path: "", redirectTo: "/home", pathMatch: "full" },
-	{ path: "**", component: NotFoundComponent },
-];
 
 @NgModule({
 	declarations: [
@@ -52,7 +41,7 @@ const routes: Routes = [
 		NotFoundComponent,
 		CheckoutComponent,
 	],
-	imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+	imports: [BrowserModule, FormsModule, AppRoutingModule],
 	providers: [ServicesService, CourseService],
 	bootstrap: [AppComponent],
 })

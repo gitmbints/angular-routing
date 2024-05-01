@@ -16,14 +16,18 @@ export class CoursesComponent implements OnInit {
 	activeRoute: ActivatedRoute = inject(ActivatedRoute);
 
 	ngOnInit() {
-		this.searchText = this.activeRoute.snapshot.queryParamMap.get("search");
+    // this.searchText = this.activeRoute.snapshot.queryParamMap.get("search");
+    
+    this.activeRoute.queryParamMap.subscribe((data) => {
+      this.searchText = data.get('search');
 
-		if (!this.searchText) {
-			this.AllCourses = this.coursesService.courses;
-		} else {
-			this.AllCourses = this.coursesService.courses.filter((course) =>
-				course.title.toLowerCase().includes(this.searchText.toLowerCase())
-			);
-		}
+      if (!this.searchText) {
+        this.AllCourses = this.coursesService.courses;
+      } else {
+        this.AllCourses = this.coursesService.courses.filter((course) =>
+          course.title.toLowerCase().includes(this.searchText.toLowerCase())
+        );
+      }
+    });
 	}
 }

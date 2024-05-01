@@ -27,7 +27,8 @@ const routes: Routes = [
 	{ path: "about", component: AboutComponent },
 	{ path: "contact", component: ContactComponent },
 	{ path: "courses", component: CoursesComponent },
-	{ path: "courses/course/:id", component: CourseDetailComponent },
+  // { path: "courses/course/:id", component: CourseDetailComponent },
+  { path: "courses", children: [ { path: "course/:id", component: CourseDetailComponent} ]},
 	{ path: "", redirectTo: "/home", pathMatch: "full" },
 	{ path: "**", component: NotFoundComponent },
 ];

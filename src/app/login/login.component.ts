@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 			alert("The login credentials is not correct");
 		} else {
 			alert("Welcome " + user.name + ". You are logged in.");
-			this.router.navigate(["courses"]);
+			this.router.navigate(["home"]);
 		}
 	}
 }

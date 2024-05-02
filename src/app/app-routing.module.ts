@@ -8,6 +8,8 @@ import { CoursesComponent } from "./courses/courses.component";
 import { CourseDetailComponent } from "./courses/course-detail/course-detail.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { LoginComponent } from "./login/login.component";
+import { CheckoutComponent } from "./checkout/checkout.component";
+import { AuthGuardService } from "./Services/auth-guard.service";
 
 const routes: Routes = [
 	{ path: "home", component: HomeComponent },
@@ -16,7 +18,10 @@ const routes: Routes = [
 	{ path: "courses", component: CoursesComponent },
 	{
 		path: "courses",
-		children: [{ path: "course/:id", component: CourseDetailComponent }],
+    children: [
+      { path: "course/:id", component: CourseDetailComponent },
+      { path: "checkout", component: CheckoutComponent, canActivate: [AuthGuardService] }
+    ],
 	},
 	{ path: "login", component: LoginComponent },
 

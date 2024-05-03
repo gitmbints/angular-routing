@@ -10,12 +10,20 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { LoginComponent } from "./login/login.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { AuthGuardService } from "./Services/auth-guard.service";
-import { canActivate, canActivateChild } from "./auth.guard";
+import { canActivateChild } from "./auth.guard";
 
 const routes: Routes = [
 	{ path: "home", component: HomeComponent },
 	{ path: "about", component: AboutComponent },
-	{ path: "contact", component: ContactComponent },
+	{
+		path: "contact",
+		component: ContactComponent,
+		canDeactivate: [
+			(component: ContactComponent) => {
+				return component.canExit();
+			},
+		],
+	},
 	{ path: "courses", component: CoursesComponent },
 	{
 		path: "courses",

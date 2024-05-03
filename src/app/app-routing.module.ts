@@ -10,6 +10,7 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { LoginComponent } from "./login/login.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { AuthGuardService } from "./Services/auth-guard.service";
+import { canActivate } from "./auth.guard";
 
 const routes: Routes = [
 	{ path: "home", component: HomeComponent },
@@ -18,10 +19,14 @@ const routes: Routes = [
 	{ path: "courses", component: CoursesComponent },
 	{
 		path: "courses",
-    children: [
-      { path: "course/:id", component: CourseDetailComponent },
-      { path: "checkout", component: CheckoutComponent, canActivate: [AuthGuardService] }
-    ],
+		children: [
+			{ path: "course/:id", component: CourseDetailComponent },
+			{
+				path: "checkout",
+				component: CheckoutComponent,
+				canActivate: [canActivate],
+			},
+		],
 	},
 	{ path: "login", component: LoginComponent },
 

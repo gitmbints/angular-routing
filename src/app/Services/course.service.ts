@@ -94,9 +94,9 @@ export class CourseService {
 	];
 
 	getAllcourses() {
-		return new Observable<Course[]>((sub) => {
+		return new Observable<Course[]>((observer) => {
 			setTimeout(() => {
-				sub.next(this.courses);
+				observer.next(this.courses);
 			}, 5000);
 		});
 	}

@@ -17,14 +17,12 @@ export class CoursesComponent implements OnInit, OnDestroy {
 	activeRoute: ActivatedRoute = inject(ActivatedRoute);
 
 	ngOnInit() {
-		// this.searchText = this.activeRoute.snapshot.queryParamMap.get("search");
-
 		this.queryParamMapObservable = this.activeRoute.queryParamMap.subscribe(
 			(data) => {
 				this.searchText = data.get("search");
 
 				if (!this.searchText) {
-					this.AllCourses = this.coursesService.courses;
+					this.AllCourses = this.activeRoute.snapshot.data["courses"];
 				} else {
 					this.AllCourses = this.coursesService.courses.filter((course) =>
 						course.title.toLowerCase().includes(this.searchText.toLowerCase())

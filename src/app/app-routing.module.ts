@@ -9,7 +9,6 @@ import { CourseDetailComponent } from "./courses/course-detail/course-detail.com
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { LoginComponent } from "./login/login.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
-import { AuthGuardService } from "./Services/auth-guard.service";
 import { canActivateChild, resolve } from "./auth.guard";
 
 const routes: Routes = [
@@ -51,7 +50,7 @@ const routes: Routes = [
 
 @NgModule({
 	declarations: [],
-	imports: [CommonModule, RouterModule.forRoot(routes)],
+	imports: [CommonModule, RouterModule.forRoot(routes, { enableTracing: true })],
 	exports: [RouterModule],
 })
 export class AppRoutingModule {}

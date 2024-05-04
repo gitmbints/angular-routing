@@ -36,7 +36,7 @@ const routes: Routes = [
 				component: CourseDetailComponent,
 			},
 			{
-				path: "checkout",
+				path: "checkout/course/:id",
 				component: CheckoutComponent,
 			},
 		],

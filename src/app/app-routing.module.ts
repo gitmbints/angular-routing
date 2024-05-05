@@ -36,21 +36,20 @@ const routes: Routes = [
 				component: CourseDetailComponent,
 			},
 			{
-				path: "checkout/course/:id",
-				component: CheckoutComponent,
+				path: "checkout",
+        component: CheckoutComponent,
 			},
 		],
 		canActivateChild: [canActivateChild],
 	},
 	{ path: "login", component: LoginComponent },
-
 	{ path: "", redirectTo: "/home", pathMatch: "full" },
 	{ path: "**", component: NotFoundComponent },
 ];
 
 @NgModule({
 	declarations: [],
-	imports: [CommonModule, RouterModule.forRoot(routes, { enableTracing: true })],
+	imports: [CommonModule, RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 })
 export class AppRoutingModule {}

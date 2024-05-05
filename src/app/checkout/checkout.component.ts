@@ -1,5 +1,5 @@
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
 import { Course } from '../Models/course';
 import { CourseService } from '../Services/course.service';
 
@@ -8,24 +8,13 @@ import { CourseService } from '../Services/course.service';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent implements OnInit, OnDestroy {
-  courseId: number;
-  selectedCourse: Course;
-  paramMapObservable;
-
+export class CheckoutComponent implements OnInit {
+  course;
+  
   activeRoute: ActivatedRoute = inject(ActivatedRoute);
-  courseService: CourseService = inject(CourseService);
+  router: Router = inject(Router);
 
   ngOnInit(): void {
-    this.paramMapObservable = this.activeRoute.paramMap.subscribe((data) => {
-      this.courseId = +data.get('id');
-      this.selectedCourse = this.courseService.courses.find((course) => {
-        course.id === this.courseId;
-      })
-    })
-  }
-
-  ngOnDestroy(): void {
-    this.paramMapObservable.unsubscribe();
+    this.course = history.state;
   }
 }
